@@ -95,7 +95,7 @@ Altera o usuario com o id informado.
 {
     "nome": "Nicolas",
     "email": "nicolas@gmail.com",
-	"senha": "212121"
+    "senha": "212121"
 }
 ```
 
