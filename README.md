@@ -9,7 +9,7 @@ Este projeto, desenvolvido para o CHALLENGE da FIAP com parceria da PLUSOFT. A C
 
 ### Equipe de Projeto e Suas Responsabilidades
 
-- **Alberto Rubin Peruchi** ( JAVA ADVANCED , DEVOPS E MOBILE ) - RM 99706
+- **Alberto R. Peruchi** ( JAVA ADVANCED , DEVOPS E MOBILE ) - RM 99706
 - **Angelo Augusto Pelluci**( IA , DEVOPS E MOBILE ) - RM98310 
 - **Gabriela Stanguini** ( QA , IA E MOBILE) - RM 98786
 - **Maria Fernanda Ribeiro Mello** ( QA , C# E MOBILE)- RM 98818
