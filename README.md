@@ -5,6 +5,8 @@
 
 Este projeto, desenvolvido para o CHALLENGE da FIAP com parceria da PLUSOFT. A CineWave é uma plataforma inovadora que visa revolucionar a estratégia de marketing para a indústria de streaming de filmes. Ao oferecer uma solução baseada em Inteligência Artificial, a plataforma permite aos profissionais de marketing cadastrar suas campanhas de filmes de forma simplificada, fornecendo insights valiosos para a tomada de decisões estratégicas. Alguns dos principais insights oferecidos incluem previsões de ROI, identificação dos canais de marketing mais eficazes para cada gênero de filme, análise do CPC por gênero e estimativa do número de conversões. Com essas informações, os profissionais de marketing podem otimizar a alocação de orçamento, maximizar o engajamento do público-alvo e melhorar a eficácia de suas campanhas de marketing.
 
+## Link do video pitch:
+
 ### Equipe de Projeto e Suas Responsabilidades
 
 - **Alberto Rubin Peruchi** ( JAVA ADVANCED , DEVOPS E MOBILE ) - RM 99706
