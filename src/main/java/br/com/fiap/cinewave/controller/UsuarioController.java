@@ -69,7 +69,7 @@ public class UsuarioController {
                     .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("{email}")
+    @GetMapping("/login/{email}")
     @Operation(summary = "Busca um usuário pelo email.",
             description = "Endpoint que retorna um usuário com base em seu email.")
     public ResponseEntity<Usuario> findByEmail(@PathVariable String email) {
