@@ -6,6 +6,10 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,24 +31,33 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("campanha")
 @Slf4j
+@Tag(name = "campanhas", description = "Endpoint relacionado com as campanhas do CineWave")
 public class CampanhaController {
 
     CampanhaRepository campanhaRepository;
 
-
     @GetMapping
+    @Operation(summary = "Lista todas as campanhas cadastradas no sistema.",
+            description = "Endpoint que retorna um array de objetos do tipo campanhas")
     public List<Campanha> index() {
         return campanhaRepository.findAll();
     }
 
     @PostMapping
     @ResponseStatus(CREATED)
+    @Operation(summary = "Cadastra uma campanha no sistema.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "400", description = "Erro de validação da categoria"),
+            @ApiResponse(responseCode = "201", description = "Campanha cadastrada com sucesso")
+    })
     public Campanha create(@RequestBody @Valid Campanha campanha) {
         log.info("cadastrando campanha: {}", campanha);
         return campanhaRepository.save(campanha);
     }
 
     @GetMapping("{id}")
+    @Operation(summary = "Busca uma campanha pelo id.",
+            description = "Endpoint que retorna uma campanha com base em seu id.")
     public ResponseEntity<Campanha> get(@PathVariable Long id) {
         log.info("Buscar por id: {}", id);
 
@@ -54,9 +67,9 @@ public class CampanhaController {
                     .orElse(ResponseEntity.notFound().build());
     }
 
-
-        @DeleteMapping("{id}")
+    @DeleteMapping("{id}")
     @ResponseStatus(NO_CONTENT)
+    @Operation(summary = "Apaga uma campanha do sistema.")
     public void destroy(@PathVariable Long id) {
         log.info("apagando campanha {}", id);
 
@@ -64,8 +77,8 @@ public class CampanhaController {
         campanhaRepository.deleteById(id);
     }
 
-
     @PutMapping("{id}")
+    @Operation(summary = "Atualiza os dados de uma campanha no sistema com base no id.")
     public Campanha update(@PathVariable Long id, @RequestBody Campanha campanha){
         log.info("atualizando campanha id {} para {}", id, campanha);
         
@@ -76,8 +89,6 @@ public class CampanhaController {
 
     }
 
-
-
     private void verificarSeExisteCampanha(Long id) {
         campanhaRepository
             .findById(id)
@@ -85,6 +96,4 @@ public class CampanhaController {
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "campanha não encontrada" )
             );
     }
-
-    
 }

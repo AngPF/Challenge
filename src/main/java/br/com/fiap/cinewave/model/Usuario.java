@@ -20,7 +20,8 @@ public class Usuario {
     @Size(min = 3, message =  "{usuario.nome.size}")
     private String nome;
 
-    @NotBlank(message = "{usuario.email.notblank}") @Email
+    @NotBlank(message = "{usuario.email.notblank}")
+    @Email
     private String email;
 
     @NotBlank @Size(min = 6, max = 6, message = "{usuario.senha.size}")

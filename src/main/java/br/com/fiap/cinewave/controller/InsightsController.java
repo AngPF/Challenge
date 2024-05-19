@@ -5,6 +5,10 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,24 +31,34 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("insights")
 @Slf4j
+@Tag(name = "insights", description = "Endpoint relacionado com os insights do CineWave")
 public class InsightsController {
 
     @Autowired
     InsightsRepository insightsRepository;
 
     @GetMapping
+    @Operation(summary = "Lista todos os insights cadastrados no sistema.",
+            description = "Endpoint que retorna um array de objetos do tipo insights")
     public List<Insights> index() {
         return insightsRepository.findAll();
     }
 
     @PostMapping
     @ResponseStatus(CREATED)
+    @Operation(summary = "Cadastra um insight no sistema.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "400", description = "Erro de validação do insight"),
+            @ApiResponse(responseCode = "201", description = "Insight cadastrado com sucesso")
+    })
     public Insights create(@RequestBody @Valid Insights insights) {
         log.info("cadastrando insights: {}", insights);
         return insightsRepository.save(insights);
     }
 
     @GetMapping("{id}")
+    @Operation(summary = "Busca um insight pelo id.",
+            description = "Endpoint que retorna um insight com base em seu id.")
     public ResponseEntity<Insights> get(@PathVariable Long id) {
         log.info("Buscar por id: {}", id);
 
@@ -54,9 +68,9 @@ public class InsightsController {
                     .orElse(ResponseEntity.notFound().build());
     }
 
-
-        @DeleteMapping("{id}")
+    @DeleteMapping("{id}")
     @ResponseStatus(NO_CONTENT)
+    @Operation(summary = "Apaga um insight do sistema.")
     public void destroy(@PathVariable Long id) {
         log.info("apagando insights {}", id);
 
@@ -64,8 +78,8 @@ public class InsightsController {
         insightsRepository.deleteById(id);
     }
 
-
     @PutMapping("{id}")
+    @Operation(summary = "Atualiza os dados de um insight no sistema com base no id.")
     public Insights update(@PathVariable Long id, @RequestBody Insights insights){
         log.info("atualizando insights id {} para {}", id, insights);
         
@@ -76,8 +90,6 @@ public class InsightsController {
 
     }
 
-
-
     private void verificarSeExisteInsights(Long id) {
         insightsRepository
             .findById(id)
@@ -85,7 +97,4 @@ public class InsightsController {
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "insights não encontrada" )
             );
     }
-
-
-
 }
