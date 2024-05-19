@@ -15,6 +15,11 @@ Este projeto, desenvolvido para o CHALLENGE da FIAP com parceria da PLUSOFT. A C
 - **Maria Fernanda Ribeiro Mello** ( QA , C# E MOBILE)- RM 98818
 - **Nicolas Reis do Espirito Santo** ( JAVA ADVANCED ,BANCO DE DADOS E MOBILE) - RM 98819
 
+## Segunda Sprint
+### O que foi adicionado?
+Implementamos as classes que faltavam para o projeto (Insights e Campanhas) e suas respectivas Controllers e Repositories, adicionamos o diagrama atualizado e também a documentação por meio do Swagger.
+
+
 ## Endpoints
 
 ### usuarios
