@@ -6,10 +6,12 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 import java.util.List;
 
+import br.com.fiap.cinewave.service.CampanhaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,13 +36,35 @@ import lombok.extern.slf4j.Slf4j;
 @Tag(name = "campanhas", description = "Endpoint relacionado com as campanhas do CineWave")
 public class CampanhaController {
 
-    CampanhaRepository campanhaRepository;
+    @Autowired
+    private CampanhaRepository campanhaRepository;
+
+    @Autowired
+    private CampanhaService campanhaService;
 
     @GetMapping
     @Operation(summary = "Lista todas as campanhas cadastradas no sistema.",
             description = "Endpoint que retorna um array de objetos do tipo campanhas")
     public List<Campanha> index() {
         return campanhaRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Busca uma campanha pelo id.",
+            description = "Endpoint que retorna uma campanha com base em seu id.")
+    public ResponseEntity<Campanha> get(@PathVariable Long id) {
+        log.info("Buscar por id: {}", id);
+
+        return campanhaRepository
+                .findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/user/{usuarioId}")
+    public ResponseEntity<List<Campanha>> buscarCampanhasPorUsuarioId(@PathVariable Long usuarioId) {
+        List<Campanha> campanhas = campanhaService.buscarCampanhasPorUsuarioId(usuarioId);
+        return ResponseEntity.ok(campanhas);
     }
 
     @PostMapping
@@ -50,21 +74,9 @@ public class CampanhaController {
             @ApiResponse(responseCode = "400", description = "Erro de validação da categoria"),
             @ApiResponse(responseCode = "201", description = "Campanha cadastrada com sucesso")
     })
-    public Campanha create(@RequestBody @Valid Campanha campanha) {
-        log.info("cadastrando campanha: {}", campanha);
-        return campanhaRepository.save(campanha);
-    }
-
-    @GetMapping("{id}")
-    @Operation(summary = "Busca uma campanha pelo id.",
-            description = "Endpoint que retorna uma campanha com base em seu id.")
-    public ResponseEntity<Campanha> get(@PathVariable Long id) {
-        log.info("Buscar por id: {}", id);
-
-        return campanhaRepository
-                    .findById(id)
-                    .map(ResponseEntity::ok)
-                    .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<Campanha> criarCampanha(@RequestBody @Valid Campanha campanha) {
+        Campanha novaCampanha = campanhaService.criarCampanha(campanha);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novaCampanha);
     }
 
     @DeleteMapping("{id}")

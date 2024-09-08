@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
 @Data
@@ -23,10 +24,10 @@ public class Campanha {
     @NotBlank
     private String faixa_etaria_filme;
 
-    @NotBlank
+    @Positive
     private float budget;
 
-    @NotBlank
+    @Positive
     private int expectativa_alcance;
 
     @ManyToOne
