@@ -1,5 +1,6 @@
 package br.com.fiap.cinewave.controller;
 
+import br.com.fiap.cinewave.model.LoginRequest;
 import br.com.fiap.cinewave.model.Usuario;
 import br.com.fiap.cinewave.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,10 @@ public class AuthController {
     private UsuarioService usuarioService;
 
     @PostMapping("/login")
-    public ResponseEntity<Usuario> login(@RequestParam String email, @RequestParam String senha) {
+    public ResponseEntity<Usuario> login(@RequestBody LoginRequest loginRequest) {
+        String email = loginRequest.getEmail();
+        String senha = loginRequest.getSenha();
+
         Usuario usuario = usuarioService.autenticarUsuario(email, senha);
 
         if (usuario != null) {
