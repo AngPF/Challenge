@@ -15,11 +15,11 @@ public class AuthController {
     private UsuarioService usuarioService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestParam String email, @RequestParam String senha) {
+    public ResponseEntity<?> login(@RequestParam String email, @RequestParam String senha) {
         Usuario usuario = usuarioService.autenticarUsuario(email, senha);
 
         if (usuario != null) {
-            return ResponseEntity.ok("Login realizado com sucesso");
+            return ResponseEntity.ok(usuario);
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas");
     }
