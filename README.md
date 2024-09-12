@@ -62,25 +62,29 @@ ____
   "email": "alb@email.com",
   "senha": "123456"
 }
-
+```
+```json
 {
   "nome": "Angelo",
   "email": "angelo@email.com",
   "senha": "ang123"
 }
-
+```
+```json
 {
   "nome": "Gabi",
   "email": "gabi@email.com",
   "senha": "gab456"
 }
-
+```
+```json
 {
   "nome": "Maria",
   "email": "maria@email.com",
   "senha": "mar789"
 }
-
+```
+```json
 {
   "nome": "Nicolas",
   "email": "nicolas@email.com",
@@ -98,7 +102,7 @@ ____
 ```
 ___
 
-## requisições campanha
+## Requisições para Campanha
 
 ```json
 {
@@ -114,8 +118,8 @@ ___
     "senha": "ang123"
   }
 }
-
-
+```
+```json
 {
   "titulo_filme": "Batman: O Cavaleiro das Trevas",
   "genero_filme": "Ação",
@@ -129,7 +133,8 @@ ___
     "senha": "gab456"
   }
 }
-
+```
+```json
 {
   "titulo_filme": "Clube da Luta",
   "genero_filme": "Drama",
@@ -143,7 +148,8 @@ ___
     "senha": "mar789"
   }
 }
-
+```
+```json
 {
   "titulo_filme": "A Origem",
   "genero_filme": "Ficção Científica",
@@ -157,8 +163,8 @@ ___
     "senha": "mar789"
   }
 }
-
-
+```
+```json
 {
   "titulo_filme": "Matrix",
   "genero_filme": "Ficção Científica",
