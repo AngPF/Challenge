@@ -9,11 +9,11 @@ Este projeto, desenvolvido para o CHALLENGE da FIAP com parceria da PLUSOFT. A C
 
 ### Equipe de Projeto e Suas Responsabilidades
 
-- **Alberto R. Peruchi** ( JAVA ADVANCED , DEVOPS E MOBILE ) - RM 99706
-- **Angelo Augusto Pelluci**( IA , DEVOPS E MOBILE ) - RM98310 
-- **Gabriela Stanguini** ( QA , IA E MOBILE) - RM 98786
-- **Maria Fernanda Ribeiro Mello** ( QA , C# E MOBILE)- RM 98818
-- **Nicolas Reis do Espirito Santo** ( JAVA ADVANCED ,BANCO DE DADOS E MOBILE) - RM 98819
+- **Alberto R. Peruchi** - RM 99706
+- **Angelo Augusto Pelluci** - RM98310 
+- **Gabriela Stanguini** - RM 98786
+- **Maria Fernanda Ribeiro Mello** - RM 98818
+- **Nicolas Reis do Espirito Santo** - RM 98819
 
 ## Comandos
 
@@ -22,15 +22,16 @@ Este projeto, desenvolvido para o CHALLENGE da FIAP com parceria da PLUSOFT. A C
 ``` az group create --name rg-bcosql --location brazilsouth ```
 
 
-### criar servidor 
+### Comando para criar Servidor SQL
 ``` az sql server create -l brazilsouth -g rg-bcosql -n sqlserver-rm99706 -u admsql -p devops@Fiap2tds --enable-public-network true ```
 
-### cria banco
+### Comando para criar Banco de Dados SQL
 ``` az sql db create -g rg-bcosql -s sqlserver-rm99706 -n cinewave --service-objective Basic --backup-storage-redundancy Local --zone-redundant false ``` 
 
-### cria regra de firewall liberando tds os ips
+### Comando para criar regra de firewall liberando todos os IPs
 ``` az sql server firewall-rule create -g rg-bcosql -s sqlserver-rm99706 -n AllowAll --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255``` 
 
+### Dados de acesso ao BD
 **Usuário:** 
 admsql
 
@@ -38,7 +39,7 @@ admsql
 devops@Fiap2tds
 
 ___
-## comando de criação do banco
+## Dados para criação do App Service
 
 ### Nome do grupo de recursos
 rg-cinewave
@@ -53,7 +54,7 @@ planCinewave
 - Java SE
 
 ____
-## requisições para usuário
+## Requisições para Usuário
 
 ```json
 {
