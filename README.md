@@ -55,6 +55,9 @@ planCinewave
 
 ____
 ## Requisições para Usuário
+```bash
+https://cinewave.azurewebsites.net/user
+```
 
 ```json
 {
@@ -103,6 +106,9 @@ ____
 ___
 
 ## Requisições para Campanha
+```bash
+https://cinewave.azurewebsites.net/campanha
+```
 
 ```json
 {
