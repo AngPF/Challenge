@@ -1,5 +1,5 @@
 # CINEWAVE - FIAP TDSA
-## Disciplina: JAVA ADVANCED
+## Disciplina: DevOps Tools e Cloud Computing
 
 ### Visão Geral do Projeto
 
@@ -15,131 +15,177 @@ Este projeto, desenvolvido para o CHALLENGE da FIAP com parceria da PLUSOFT. A C
 - **Maria Fernanda Ribeiro Mello** ( QA , C# E MOBILE)- RM 98818
 - **Nicolas Reis do Espirito Santo** ( JAVA ADVANCED ,BANCO DE DADOS E MOBILE) - RM 98819
 
-## Segunda Sprint
-### O que foi adicionado?
-Implementamos as classes que faltavam para o projeto (Insights e Campanhas) e suas respectivas Controllers e Repositories, adicionamos o diagrama atualizado e também a documentação por meio do Swagger.
+## Comandos
+
+### Comando para criar o grupo de recursos
+
+``` az group create --name rg-bcosql --location brazilsouth ```
 
 
-## Endpoints
+### criar servidor 
+``` az sql server create -l brazilsouth -g rg-bcosql -n sqlserver-rm99706 -u admsql -p devops@Fiap2tds --enable-public-network true ```
 
-### usuarios
+### cria banco
+``` az sql db create -g rg-bcosql -s sqlserver-rm99706 -n cinewave --service-objective Basic --backup-storage-redundancy Local --zone-redundant false ``` 
 
-`GET` /user
+### cria regra de firewall liberando tds os ips
+``` az sql server firewall-rule create -g rg-bcosql -s sqlserver-rm99706 -n AllowAll --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255``` 
 
-Lista todos os usuarios cadastrados no sistema.
+**Usuário:** 
+admsql
 
-*códigos de status*
+**Senha:**
+devops@Fiap2tds
 
-200 sucesso
+___
+## comando de criação do banco
 
----
+### Nome do grupo de recursos
+rg-cinewave
 
-`GET` /user/{id}
+### Nome do app
+cinewave
 
-Retorna os detalhes de um usuario com o id informado.
+#### Nome do plano de serviço
+planCinewave
 
-*códigos de status*
+- Java 17 
+- Java SE
 
-200 sucesso
+____
+## requisições para usuário
 
-404 id não encontrado
-
----
-
-`POST` /user
-
-Cadastrar um novo usuario.
-
-| campo | tipo | obrigatório | descrição|
-| :----------:|:-------:|:------------:|:-------------:
-|nome|string|✅|Nome so usuario
-|email|string|✅|Email do usuario
-|senha|string|✅|senha do usuario contendo 6 caracteres
-
-*códigos de status*
-
-201 criado com sucesso
-
-400 validação falhou
-
----
-
-`DELETE` /user/{id}
-
-Apaga o usuario com o id informado.
-
-*códigos de status*
-
-204 apagado com sucesso
-
-404 id não encontrado
-
----
-
-`PUT` /user/{id}
-
-Altera o usuario com o id informado.
-
-| campo | tipo | obrigatório | descrição|
-| :----------:|:-------:|:------------:|:-------------:
-|nome|string|✅|Novo Nome so usuario
-|email|string|✅|Novo Email do usuario
-|senha|string|✅|Nova senha do usuario contendo 6 caracteres
-
-*códigos de status*
-
-200 sucesso
-
-404 id não encontrado
-
-400 validação falhou
-
----
-
-*Schema*
-
-```js
+```json
 {
-    "nome": "Nicolas",
-    "email": "nicolas@gmail.com",
-    "senha": "212121"
+  "nome": "Alberto",
+  "email": "alb@email.com",
+  "senha": "123456"
+}
+
+{
+  "nome": "Angelo",
+  "email": "angelo@email.com",
+  "senha": "ang123"
+}
+
+{
+  "nome": "Gabi",
+  "email": "gabi@email.com",
+  "senha": "gab456"
+}
+
+{
+  "nome": "Maria",
+  "email": "maria@email.com",
+  "senha": "mar789"
+}
+
+{
+  "nome": "Nicolas",
+  "email": "nicolas@email.com",
+  "senha": "nic321"
 }
 ```
 
+## UPDATE 
+```json
+{
+  "nome": "Alberto",
+  "email": "alb@email.com",
+  "senha": "alb456"
+}
+```
+___
+
+## requisições campanha
+
+```json
+{
+  "titulo_filme": "O Poderoso Chefão",
+  "genero_filme": "Drama",
+  "faixa_etaria_filme": "16",
+  "budget": 20000,
+  "expectativa_alcance": 50000,
+  "usuario": {
+    "id": 2,
+    "nome": "Angelo",
+    "email": "angelo@email.com",
+    "senha": "ang123"
+  }
+}
 
 
-## Definição do Nosso Problema: 
+{
+  "titulo_filme": "Batman: O Cavaleiro das Trevas",
+  "genero_filme": "Ação",
+  "faixa_etaria_filme": "14",
+  "budget": 15000,
+  "expectativa_alcance": 30000,
+  "usuario": {
+    "id": 3,
+    "nome": "Gabi",
+    "email": "gabi@email.com",
+    "senha": "gab456"
+  }
+}
 
-No atual ecossistema digital de streaming de filmes, saturado e altamente competitivo, não basta apenas ter conteúdo de qualidade; é crucial possuir estratégias de marketing precisas e eficazes. A Plusoft, líder em soluções de Human Experience, identificou um problema significativo que os profissionais de marketing enfrentam: a dependência de analistas de Business Intelligence para realizar análises preditivas de futuras campanhas de marketing. Esse processo é demorado e pode levar dias até que os insights sejam devolvidos aos profissionais de marketing. Além disso, a empresa busca maneiras de integrar análise de dados avançada e inteligência artificial para acelerar e aprimorar esse processo, garantindo insights mais rápidos e, consequentemente, decisões de marketing mais ágeis.
-A solução proposta pela Plusoft não apenas simplifica e acelera o processo de análise de marketing mas também potencializa a eficácia das campanhas, pois os insights gerados pela plataforma são 
+{
+  "titulo_filme": "Clube da Luta",
+  "genero_filme": "Drama",
+  "faixa_etaria_filme": "18",
+  "budget": 12000,
+  "expectativa_alcance": 25000,
+  "usuario": {
+    "id": 4,
+    "nome": "Maria",
+    "email": "maria@email.com",
+    "senha": "mar789"
+  }
+}
 
-## Público-alvo: 
-
-Clientes/Pagantes: Diretores e gerentes de marketing em empresas de streaming de filmes que buscam otimizar suas estratégias de marketing. 
-
-Usuários/Consumidores: Profissionais de marketing dentro dessas organizações que utilizarão o sistema para planejar, executar e analisar campanhas. Este público se beneficiará diretamente da automação e insights rápidos, permitindo-lhes tomar decisões informadas de forma mais rápida e eficaz. 
-
-A solução proposta pela Plusoft não apenas simplifica e acelera o processo de análise de marketing mas também potencializa a eficácia das campanhas, pois os insights gerados pela plataforma são baseados em modelos preditivos que utilizam grandes volumes de dados históricos e tendências atuais do mercado. Isso não só aumenta a precisão das previsões mas também permite que os profissionais de marketing otimizem cada aspecto da campanha. Por exemplo, identificar qual canal de mídia social gera mais engajamento para um determinado gênero de filme pode direcionar os investimentos para esses canais, aumentando a eficiência do gasto publicitário e melhorando as taxas de conversã 
-
-## Proposta da Solução: 
-
-Para enfrentar esses desafios, criaremos a CineWave, um app onde os profissionais de marketing irão conseguir cadastrar suas campanhas de filmes para o streaming e com poucos detalhes (título do filme, gênero, faixa-etária, budget total da ação e valor de alcance previsto), a Inteligência Artificial conseguirá prever alguns dados importantes para o “marketeiro”, servindo de insights para tomada de estratégias para a campanha 
-
-Alguns insights principais da solução incluem: 
-
-Previsões de ROI: Utilizar modelos preditivos avançados para estimar o retorno sobre o investimento de campanhas futuras, considerando variáveis como gênero do filme, orçamento e faixa-etária. 
-
-Escolha de Canais de Marketing: Identificar qual canal de marketing é mais eficaz para o tipo de gênero fornecido, levando em conta o entendimento de campanhas de marketing anteriores, maximizando a eficiência da alocação do orçamento. 
-
-Analisar o CPC por Gênero de Filme: Fornecer insights sobre o custo médio por clique, ajudando a direcionar campanhas para maximizar o engajamento a um custo menor. 
-
-Estimar o Número de Conversões: Basear as estimativas no alcance esperado e em dados de campanhas anteriores para melhorar a precisão das previsões e a eficácia das campanhas. 
+{
+  "titulo_filme": "A Origem",
+  "genero_filme": "Ficção Científica",
+  "faixa_etaria_filme": "12",
+  "budget": 18000,
+  "expectativa_alcance": 45000,
+  "usuario": {
+    "id": 4,
+    "nome": "Maria",
+    "email": "maria@email.com",
+    "senha": "mar789"
+  }
+}
 
 
-## Licença
+{
+  "titulo_filme": "Matrix",
+  "genero_filme": "Ficção Científica",
+  "faixa_etaria_filme": "16",
+  "budget": 22000,
+  "expectativa_alcance": 60000,
+  "usuario": {
+    "id": 5,
+    "nome": "Nicolas",
+    "email": "nicolas@email.com",
+    "senha": "nic321"
+  }
+}
+```
 
-Este projeto e todos os materiais associados estão protegidos por direitos autorais e são propriedade exclusiva da equipe deste projeto. Este conteúdo não é open-source e está disponível apenas para visualização e uso no contexto do projeto da Cinewave desenvolvido pela equipe designada, sob o Challenge da FIAP.
-
-A distribuição, reprodução, modificação ou uso deste material para quaisquer outros fins sem a autorização expressa por escrito é estritamente proibida. Todos os direitos reservados.
-
-Para mais informações sobre o uso permitido e as restrições de licença, entre em contato.
+### UPDATE
+```json
+{
+  "titulo_filme": "Matrix Reloaded",
+  "genero_filme": "Ficção Científica",
+  "faixa_etaria_filme": "16",
+  "budget": 25000,
+  "expectativa_alcance": 70000,
+  "usuario": {
+    "id": 5,
+    "nome": "Nicolas",
+    "email": "nicolas@email.com",
+    "senha": "nic321"
+  }
+}
+````
