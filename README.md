@@ -41,17 +41,57 @@ devops@Fiap2tds
 ___
 ## Dados para criação do App Service
 
+### Após fazer um fork do repositório, basta seguir os passos abaixo:
+
 ### Nome do grupo de recursos
 rg-cinewave
 
 ### Nome do app
 cinewave
 
+![Captura de tela 2024-09-14 173851](https://github.com/user-attachments/assets/3b815606-65b4-4954-ac24-b40d6f11de07)
+
+### Runtime e Servidor do App Service
+- Java 17 
+- Java SE
+
+![Captura de tela 2024-09-14 173915](https://github.com/user-attachments/assets/9f86e537-9b50-4f63-a074-eb7fb15e9b32)
+
 #### Nome do plano de serviço
 planCinewave
 
-- Java 17 
-- Java SE
+![Captura de tela 2024-09-14 173946](https://github.com/user-attachments/assets/9dcd4986-9b18-42e1-9db4-4d7cb2635f27)
+
+### Na parte de Banco de dados não mexemos em nada
+
+![Captura de tela 2024-09-14 173958](https://github.com/user-attachments/assets/3e2450df-d9d1-4e82-8ae0-aa046aea68bd)
+
+### Configurações de implantação
+- Aqui será necessário usar sua conta do Github e o fork  que deve ser feito desse repositório
+
+![Captura de tela 2024-09-14 174041](https://github.com/user-attachments/assets/e498c273-fd97-43d1-b194-da1f580d4367)
+
+![Captura de tela 2024-09-14 174057](https://github.com/user-attachments/assets/6bcd5114-a028-408d-ba16-b15ece346767)
+
+### Certifique-se de ativar o acesso público nas configurações de Rede
+
+![Captura de tela 2024-09-14 174111](https://github.com/user-attachments/assets/d38dfe31-d55c-433f-a261-8cd9e561c35c)
+
+### Configurações de Monitorar e Proteger
+- Podemos desativar o Application Insights
+
+![Captura de tela 2024-09-14 174130](https://github.com/user-attachments/assets/295f1955-198f-4e1f-83d3-cd850a5bb920)
+
+### Não é necessário criar nenhum rótulo
+
+![Captura de tela 2024-09-14 174143](https://github.com/user-attachments/assets/44c00dcc-32a7-47ad-8878-7e5528937ede)
+
+### Revisar e Criar
+- Confira se está tudo correto e pode criar o App Service
+
+![Captura de tela 2024-09-14 174211](https://github.com/user-attachments/assets/bdeec761-0cc3-4b3b-bb01-806a78ed2eb0)
+
+![Captura de tela 2024-09-14 174227](https://github.com/user-attachments/assets/a8b04260-9d95-40cc-9958-7c79fc2ac152)
 
 ____
 ## Requisições para Usuário
