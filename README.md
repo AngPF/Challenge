@@ -94,6 +94,36 @@ planCinewave
 ![Captura de tela 2024-09-14 174227](https://github.com/user-attachments/assets/a8b04260-9d95-40cc-9958-7c79fc2ac152)
 
 ____
+## Pipeline no Azure DevOps
+Esta aplicação possui um pipeline configurado no Azure DevOps para CI/CD. Abaixo estão as instruções e prints das configurações para que você possa reproduzir o pipeline:
+
+### Passos de Configuração do Pipeline
+No Azure DevOps, navegue até Pipelines > New Pipeline.
+Selecione o repositório do projeto.
+
+### Prints das Configurações do Pipeline
+Inclua links ou imagens das configurações feitas no Azure DevOps. Exemplo:
+
+### BUILD
+![image](https://github.com/user-attachments/assets/72b0d649-6d3b-4bd1-b65e-6a4fcc36f640)
+![image](https://github.com/user-attachments/assets/39f97ee0-f87b-4bdb-bd19-82507852052c)
+![image](https://github.com/user-attachments/assets/fcb5a7d5-5c4e-4a2a-a0a9-5d7a932a5689)
+![image](https://github.com/user-attachments/assets/1e37aae5-f67b-48b6-b029-91c24822597a)
+![image](https://github.com/user-attachments/assets/a3e00a49-c8d8-44df-8be9-e73d710dee8f)
+![image](https://github.com/user-attachments/assets/78b84e3a-a945-4178-ab30-45f8757b54c0)
+
+### VARIABLES
+![image](https://github.com/user-attachments/assets/c6f5450d-7da4-488a-b03c-294b6847d2ad)
+
+### TRIGGERS
+![image](https://github.com/user-attachments/assets/2282a893-b34e-4ac0-92c6-276ec158d5d4)
+
+
+### Executando o Pipeline
+A cada commit, o Azure DevOps automaticamente dispara o pipeline. Você também pode iniciar o pipeline manualmente:
+
+Navegue até Pipelines e clique em Run Pipeline para a versão mais recente.
+____
 ## Requisições para Usuário
 ```bash
 https://cinewave.azurewebsites.net/user
